@@ -1,8 +1,11 @@
 <template>
   <div class="home">
-    <Swiper />
-    <SearchBar @change="searchHandler" />
-    <CardList :list="filteredData" />
+    <div v-if="isLoading">Now Loading...</div>
+    <template v-else>
+      <Swiper />
+      <SearchBar @change="searchHandler" />
+      <CardList :list="filteredData" />
+    </template>
   </div>
 </template>
 
@@ -36,7 +39,7 @@ export default {
       this.$store.dispatch('setSearch', val)
     },
     init() {
-      // TODO: 實作 loading？
+      // TODO: 實作 loading？ done!!
       this.isLoading = true
       this.fetchProducts().finally(() => (this.isLoading = false))
     }
