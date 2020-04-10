@@ -1,8 +1,6 @@
 <template>
   <div class="swiper">
-    <template v-for="v in item">
-      <img :src="v.image" :alt="v.name" :class="size" :key="v.image">
-    </template>
+    <img :src="item.image" :alt="item.name" :class="size">
   </div>
 </template>
 <script>
@@ -10,7 +8,7 @@ export default {
   name: 'Swiper',
   props: {
     item: {
-      type: Array,
+      type: Object,
       default: () => [
         {
           name: 'default image',
